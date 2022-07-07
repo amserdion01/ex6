@@ -59,7 +59,8 @@ func PostCompany(w http.ResponseWriter, r *http.Request) {
 	body := r.Body
 	decodedBody, _ := io.ReadAll(body)
 	json.Unmarshal(decodedBody, &company)
-	db.GetDB().Create(&company)
+	db.GetDB().
+		Create(&company)
 	fmt.Print(company)
 	fmt.Fprintf(w, company.Name)
 }
